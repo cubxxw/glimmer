@@ -131,11 +131,11 @@ export async function POST(req: Request) {
     const coreMessages = convertToCoreMessages(messages)
     const data = new StreamData()
 
-    const result = streamText({
+    const result = await streamText({
       model: groq("llama-3.3-70b-versatile"),
       system: systemPrompt,
       messages: coreMessages,
-      maxOutputTokens: 150,
+      maxTokens: 150,
       temperature: 0.7,
       abortSignal: req.signal,
       onFinish: ({ text }) => {
