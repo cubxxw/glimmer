@@ -169,7 +169,7 @@ export async function POST(req: Request) {
       },
     })
 
-    return result.toUIMessageStreamResponse({ data })
+    return result.toDataStreamResponse({ data })
   } catch (error) {
     console.error("[v0] Chat API error:", error)
     return Response.json({ error: "Failed to process chat" }, { status: 500 })
